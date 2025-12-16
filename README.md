@@ -193,7 +193,7 @@ The plugin uses the following HostPay API endpoints:
 
 For support and bug reports:
 - Email: support@hostpay.africa
-- Website: https://hostpay.africa
+- Website: https://bridge.hostpay.africa
 
 ## Changelog
 
