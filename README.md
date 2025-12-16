@@ -45,7 +45,7 @@ A comprehensive WooCommerce payment gateway plugin that integrates with HostPay'
 ### Step 1: Get Your HostPay API Key
 
 1. Log in to your HostPay dashboard at [https://bridge.hostpay.africa](https://bridge.hostpay.africa)
-2. Navigate to **My Account** or **API Key Management**
+2. Navigate to **My Account** then scroll down to **API Key Management**
 3. Generate or copy your API key (format: `hpay-xxxxxxxxxxxxx`)
 
 ### Step 2: Configure the Plugin
