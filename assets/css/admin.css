@@ -1,0 +1,35 @@
+/* WooCommerce HostPay M-Pesa - Admin Styles */
+
+.wc-hostpay-mpesa-account-select {
+    min-width: 300px;
+}
+
+.wc-hostpay-fetch-accounts-btn {
+    margin-top: 10px;
+}
+
+.wc-hostpay-account-info {
+    margin-top: 10px;
+    padding: 10px;
+    background: #f0f0f1;
+    border-left: 4px solid #2271b1;
+}
+
+.wc-hostpay-account-info p {
+    margin: 5px 0;
+}
+
+.wc-hostpay-loading {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.wc-hostpay-error {
+    color: #d63638;
+    margin-top: 10px;
+}
+
+.wc-hostpay-success {
+    color: #00a32a;
+    margin-top: 10px;
+}

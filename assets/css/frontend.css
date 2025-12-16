@@ -1,0 +1,768 @@
+/**
+ * WooCommerce HostPay M-Pesa - Frontend Styles
+ */
+
+/* ========================================
+   PAYMENT MODAL
+   ======================================== */
+
+/* Modal Overlay */
+.wc-hostpay-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    display: none;
+}
+
+.wc-hostpay-modal.show {
+    display: block;
+}
+
+.wc-hostpay-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.3s ease;
+}
+
+/* Modal Content */
+.wc-hostpay-modal-content {
+    position: relative;
+    max-width: 600px;
+    margin: 50px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.4s ease;
+    overflow: hidden;
+}
+
+/* Modal Header */
+.wc-hostpay-modal-header {
+    padding: 30px;
+    background: linear-gradient(135deg, #1e8449 0%, #27ae60 100%);
+    color: #fff;
+    text-align: center;
+}
+
+.wc-hostpay-modal-header h2 {
+    margin: 0 0 15px 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.wc-hostpay-order-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.wc-hostpay-order-summary .order-number {
+    font-weight: 500;
+}
+
+.wc-hostpay-order-summary .order-amount {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+/* Modal Body */
+.wc-hostpay-modal-body {
+    padding: 0;
+}
+
+/* Modal Tabs */
+.wc-hostpay-modal-tabs {
+    display: flex;
+    border-bottom: 2px solid #e0e0e0;
+    background: #f8f9fa;
+}
+
+.wc-hostpay-modal-tab {
+    flex: 1;
+    padding: 18px 20px;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    color: #666;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.wc-hostpay-modal-tab:hover {
+    background: #fff;
+    color: #333;
+}
+
+.wc-hostpay-modal-tab.active {
+    background: #fff;
+    color: #1e8449;
+    border-bottom-color: #1e8449;
+}
+
+.wc-hostpay-modal-tab .tab-icon {
+    font-size: 22px;
+}
+
+/* Tab Content */
+.wc-hostpay-modal-tab-content {
+    padding: 30px;
+    min-height: 300px;
+}
+
+.wc-hostpay-modal-pane {
+    display: none;
+}
+
+.wc-hostpay-modal-pane.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Payment Status */
+.wc-hostpay-payment-status {
+    text-align: center;
+    padding: 20px;
+}
+
+.status-icon {
+    margin-bottom: 20px;
+}
+
+.wc-hostpay-spinner {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #1e8449;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.status-title {
+    margin: 15px 0 10px 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+.status-message {
+    color: #666;
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+/* Payment Steps */
+.payment-steps {
+    max-width: 400px;
+    margin: 30px auto 0;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.step.completed {
+    background: #d4edda;
+    border-left-color: #28a745;
+}
+
+.step.active {
+    background: #fff3cd;
+    border-left-color: #ffc107;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.step-number {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e0e0e0;
+    color: #666;
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.step.completed .step-number {
+    background: #28a745;
+    color: #fff;
+}
+
+.step.active .step-number {
+    background: #ffc107;
+    color: #fff;
+    animation: pulse 1.5s ease infinite;
+}
+
+.step-text {
+    flex: 1;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Manual Payment Content */
+.wc-hostpay-manual-content {
+    max-width: 100%;
+}
+
+.wc-hostpay-instructions-box {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.wc-hostpay-instructions-box h4 {
+    margin: 0 0 15px 0;
+    color: #1e8449;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.wc-hostpay-payment-steps {
+    margin: 0;
+    padding-left: 20px;
+    list-style: none;
+}
+
+.wc-hostpay-payment-steps li {
+    margin-bottom: 0;
+    padding-left: 10px;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.8;
+    position: relative;
+    counter-increment: step-counter;
+}
+
+.wc-hostpay-payment-steps li::before {
+    content: counter(step-counter) ".";
+    position: absolute;
+    left: -20px;
+    font-weight: 600;
+    color: #1e8449;
+}
+
+.wc-hostpay-payment-steps li strong {
+    color: #1e8449;
+    font-weight: 600;
+}
+
+/* STK Push Section */
+.wc-hostpay-stk-section {
+    padding: 10px 0;
+}
+
+.stk-description {
+    color: #555;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-left: 4px solid #1e8449;
+    border-radius: 4px;
+}
+
+.stk-phone-input {
+    margin-bottom: 25px;
+}
+
+.stk-phone-input label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.stk-phone-input label .required {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.stk-phone-input input[type="tel"],
+.stk-phone-input .input-text {
+    width: 100%;
+    padding: 14px 18px 14px 50px;
+    font-size: 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: #fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%231e8449" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>') no-repeat 15px center;
+    background-size: 20px 20px;
+}
+
+.stk-phone-input input[type="tel"]:focus,
+.stk-phone-input .input-text:focus {
+    outline: none;
+    border-color: #1e8449;
+    box-shadow: 0 0 0 3px rgba(30, 132, 73, 0.1);
+}
+
+#wc-hostpay-initiate-stk-btn {
+    width: 100%;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, #1e8449 0%, #27ae60 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(30, 132, 73, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+#wc-hostpay-initiate-stk-btn:hover {
+    background: linear-gradient(135deg, #196f3d 0%, #1e8449 100%);
+    box-shadow: 0 6px 16px rgba(30, 132, 73, 0.4);
+    transform: translateY(-2px);
+}
+
+#wc-hostpay-initiate-stk-btn:active {
+    transform: translateY(0);
+}
+
+#wc-hostpay-initiate-stk-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+#wc-hostpay-initiate-stk-btn::before {
+    content: '📱';
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+/* Verify Section */
+.wc-hostpay-verify-section {
+    margin-top: 25px;
+    padding: 25px;
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+}
+
+.wc-hostpay-verify-section h4 {
+    margin: 0 0 18px 0;
+    font-size: 17px;
+    color: #333;
+    font-weight: 600;
+}
+
+.verify-input-group {
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+}
+
+.verify-input-group input[type="text"] {
+    flex: 1;
+    padding: 14px 18px 14px 50px;
+    font-size: 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: #fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>') no-repeat 15px center;
+    background-size: 20px 20px;
+}
+
+.verify-input-group input[type="text"]:focus {
+    outline: none;
+    border-color: #1e8449;
+    box-shadow: 0 0 0 3px rgba(30, 132, 73, 0.1);
+}
+
+.verify-input-group button {
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.3);
+}
+
+.verify-input-group button:hover {
+    background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
+    box-shadow: 0 6px 16px rgba(44, 62, 80, 0.4);
+    transform: translateY(-2px);
+}
+
+.verify-input-group button:active {
+    transform: translateY(0);
+}
+
+.verify-input-group button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.verify-input-group button::before {
+    content: '✓';
+    margin-right: 6px;
+    font-weight: bold;
+}
+
+/* Checkout page input styling */
+.wc-hostpay-checkout-fields {
+    margin: 20px 0;
+}
+
+.wc-hostpay-checkout-fields .wc-hostpay-info {
+    background: linear-gradient(135deg, #e7f3ff 0%, #f0f8ff 100%);
+    padding: 18px 20px;
+    border-left: 4px solid #1e8449;
+    margin-bottom: 25px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.wc-hostpay-checkout-fields .wc-hostpay-info strong {
+    color: #1e8449;
+    font-size: 16px;
+}
+
+.wc-hostpay-checkout-fields .form-row label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+    font-size: 15px;
+}
+
+.wc-hostpay-checkout-fields #hostpay_phone_number {
+    width: 100%;
+    padding: 12px 16px 12px 48px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: #fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="%231e8449" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>') no-repeat 14px center;
+    background-size: 18px 18px;
+}
+
+.wc-hostpay-checkout-fields #hostpay_phone_number:focus {
+    outline: none;
+    border-color: #1e8449;
+    box-shadow: 0 0 0 3px rgba(30, 132, 73, 0.1);
+}
+
+.wc-hostpay-checkout-fields small {
+    display: block;
+    margin-top: 8px;
+    color: #666;
+    font-size: 13px;
+    font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .wc-hostpay-modal-content {
+        margin: 20px;
+        max-width: calc(100% - 40px);
+    }
+
+    .wc-hostpay-modal-header {
+        padding: 20px;
+    }
+
+    .wc-hostpay-modal-header h2 {
+        font-size: 20px;
+    }
+
+    .wc-hostpay-modal-tab-content {
+        padding: 20px;
+    }
+
+    .wc-hostpay-modal-tab {
+        font-size: 14px;
+        padding: 15px 10px;
+    }
+
+    .verify-input-group {
+        flex-direction: column;
+    }
+
+    .verify-input-group button {
+        width: 100%;
+    }
+
+    .stk-phone-input input[type="tel"],
+    .stk-phone-input .input-text {
+        font-size: 16px;
+        /* Prevent zoom on iOS */
+    }
+}
+
+/* Hide default checkout tabs on checkout page */
+.wc-hostpay-payment-status.success .status-icon {
+    color: #28a745;
+}
+
+.wc-hostpay-payment-status.success .wc-hostpay-spinner {
+    display: none;
+}
+
+.wc-hostpay-payment-status.success .status-icon::before {
+    content: "✓";
+    font-size: 60px;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.wc-hostpay-payment-status.success .status-title {
+    color: #28a745;
+}
+
+/* Error State */
+.wc-hostpay-payment-status.error .status-icon {
+    color: #dc3545;
+}
+
+.wc-hostpay-payment-status.error .wc-hostpay-spinner {
+    display: none;
+}
+
+.wc-hostpay-payment-status.error .status-icon::before {
+    content: "✗";
+    font-size: 60px;
+    font-weight: bold;
+    color: #dc3545;
+}
+
+.wc-hostpay-payment-status.error .status-title {
+    color: #dc3545;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .wc-hostpay-modal-content {
+        margin: 20px;
+        max-width: calc(100% - 40px);
+    }
+
+    .wc-hostpay-modal-header {
+        padding: 20px;
+    }
+
+    .wc-hostpay-modal-header h2 {
+        font-size: 20px;
+    }
+
+    .wc-hostpay-modal-tab-content {
+        padding: 20px;
+    }
+
+    .wc-hostpay-modal-tab {
+        font-size: 14px;
+        padding: 15px 10px;
+    }
+
+    .verify-input-group {
+        flex-direction: column;
+    }
+
+    .verify-input-group button {
+        width: 100%;
+    }
+}
+
+/* Hide default checkout tabs on checkout page */
+.wc-hostpay-payment-wrapper {
+    margin: 20px 0;
+}
+
+.wc-hostpay-tab-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.wc-hostpay-tab-btn {
+    flex: 1;
+    padding: 15px 20px;
+    background: #f7f7f7;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    color: #666;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.wc-hostpay-tab-btn:hover {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.wc-hostpay-tab-btn.active {
+    background: #fff;
+    color: #1e8449;
+    border-bottom-color: #1e8449;
+    font-weight: 600;
+}
+
+.wc-hostpay-tab-btn .tab-icon {
+    font-size: 20px;
+}
+
+.wc-hostpay-tab-content {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+.wc-hostpay-tab-pane {
+    display: none;
+}
+
+.wc-hostpay-tab-pane.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.wc-hostpay-stk-content,
+.wc-hostpay-manual-content {
+    max-width: 500px;
+}
+
+.wc-hostpay-description {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.wc-hostpay-stk-steps {
+    margin-top: 25px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-left: 4px solid #1e8449;
+    border-radius: 4px;
+}
+
+.wc-hostpay-stk-steps h4 {
+    margin: 0 0 12px 0;
+    color: #1e8449;
+    font-size: 15px;
+}
+
+.wc-hostpay-stk-steps ol {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.wc-hostpay-stk-steps li {
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 14px;
+}
+
+.wc-hostpay-manual-note {
+    padding: 15px;
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    border-radius: 4px;
+}
+
+.wc-hostpay-manual-note p {
+    margin: 0;
+    color: #856404;
+    font-size: 14px;
+}
+
+#hostpay_phone_number {
+    font-size: 16px;
+    padding: 10px;
+}
